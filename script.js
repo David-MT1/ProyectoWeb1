@@ -1,25 +1,44 @@
 // Desarrollador B - Lógica del proyecto
-// Colaborador: Percy Molina 
+// Colaborador: Percy Molina
+// Proyecto: Tienda Online
 
-console.log("¡Hola desde el módulo de lógica!");
+console.log("Sistema de tienda iniciado");
 
-// Función de saludo
-function saludar(nombre) {
-    return "¡Hola " + nombre + "! Bienvenido al proyecto.";
+// Lista básica de productos
+let productos = [
+    "Laptop - $500",
+    "Mouse - $20", 
+    "Teclado - $35"
+];
+
+// Carrito simple
+let carrito = [];
+
+// Función para mostrar productos
+function mostrarProductos() {
+    console.log("Productos disponibles:");
+    productos.forEach((producto, index) => {
+        console.log(`${index + 1}. ${producto}`);
+    });
 }
 
-// Función calculadora básica
-function calculadora(operacion, a, b) {
-    switch(operacion) {
-        case 'suma':
-            return a + b;
-        case 'resta':
-            return a - b;
-        default:
-            return "Operación no válida";
+// Función para agregar al carrito
+function agregarAlCarrito(item) {
+    carrito.push(item);
+    console.log(`Agregado: ${item}`);
+}
+
+// Función para ver carrito
+function verCarrito() {
+    if (carrito.length === 0) {
+        console.log("Carrito vacío");
+    } else {
+        console.log("Tu carrito:");
+        carrito.forEach(item => console.log(`- ${item}`));
     }
 }
 
-// Pruebas
-console.log(saludar("Usuario"));
-console.log("2 + 3 =", calculadora('suma', 2, 3));
+// Pruebas básicas
+mostrarProductos();
+agregarAlCarrito("Laptop - $500");
+verCarrito();
