@@ -1,0 +1,15 @@
+{
+  "appName": "MiProyecto",
+  "version": "1.0.0",
+  "debug": true,
+  "database": {
+    "host": "localhost",
+    "port": 3306,
+    "user": "root",
+    "password": "1234"
+  },
+  "apiKeys": {
+    "maps": "TU_API_KEY",
+    "weather": "TU_API_KEY"
+  }
+}
