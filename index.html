@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAgina Html</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">🧢</div>
+                Los Manrique's
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#marcas">Marcas</a></li>
+                    <li><a href="#ofertas">Ofertas</a></li>
+                    <li><a href="#novedades">Novedades</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="user-actions">
+                <button class="btn-login">Iniciar Sesión</button>
+                <button class="btn-signup">Crear Cuenta</button>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-container">
+        <h1 class="section-title">Explora Nuestras Marcas</h1>
+        
+        <div class="brands-container">
+            <button class="nav-button prev" onclick="scrollBrands('prev')">←</button>
+            <button class="nav-button next" onclick="scrollBrands('next')">→</button>
+            
+            <div class="brands-wrapper">
+                <div class="brands-grid" id="brandsGrid">
+                    <a href="#adidas" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas Logo">
+                            <span class="brand-tooltip">ADIDAS</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Adidas</h3>
+                        </div>
+                    </a>
+
+                    <a href="#nike" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
+                            <span class="brand-tooltip">NIKE</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Nike</h3>
+                        </div>
+                    </a>
+
+                    <a href="#puma" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://images.seeklogo.com/logo-png/28/2/puma-se-logo-png_seeklogo-287825.png" alt="Puma Logo">
+                            <span class="brand-tooltip">PUMA</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Puma</h3>
+                        </div>
+                    </a>
+
+                    <a href="#reebok" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://i.revistapym.com.co/old/2019/11/LOGO-REEBOK-FINAL-.png?w=1200" alt="Reebok Logo">
+                            <span class="brand-tooltip">REEBOK</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Reebok</h3>
+                        </div>
+                    </a>
+
+                    <a href="#lacoste" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Lacoste_Logo.svg" alt="Lacoste Logo">
+                            <span class="brand-tooltip">LACOSTE</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Lacoste</h3>
+                        </div>
+                    </a>
+
+                    <a href="#jordan" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/3/37/Jumpman_logo.svg" alt="Jordan Logo">
+                            <span class="brand-tooltip">JORDAN</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Jordan</h3>
+                        </div>
+                    </a>
+
+                    <a href="#underarmour" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Under_armour_logo.svg" alt="Under Armour Logo">
+                            <span class="brand-tooltip">UNDER ARMOUR</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Under Armour</h3>
+                        </div>
+                    </a>
+
+                    <a href="#newbalance" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/New_Balance_logo.svg" alt="New Balance Logo">
+                            <span class="brand-tooltip">NEW BALANCE</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">New Balance</h3>
+                        </div>
+                    </a>
+
+                    <a href="#fila" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Fila_logo.svg" alt="Fila Logo">
+                            <span class="brand-tooltip">FILA</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Fila</h3>
+                        </div>
+                    </a>
+
+                    <a href="#converse" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/d/d0/Converse_logo.svg" alt="Converse Logo">
+                            <span class="brand-tooltip">CONVERSE</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Converse</h3>
+                        </div>
+                    </a>
+
+                    <a href="#vans" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/1/15/Vans-logo.svg" alt="Vans Logo">
+                            <span class="brand-tooltip">VANS</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">Vans</h3>
+                        </div>
+                    </a>
+
+                    <a href="#northface" class="brand-card">
+                        <div class="brand-image">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/The_North_Face_logo.svg" alt="The North Face Logo">
+                            <span class="brand-tooltip">THE NORTH FACE</span>
+                        </div>
+                        <div class="brand-info">
+                            <h3 class="brand-name">The North Face</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+                        
+
+    <script>
+        let currentIndex = 0;
+        const brandsGrid = document.getElementById('brandsGrid');
+        const cards = document.querySelectorAll('.brand-card');
+        const totalCards = cards.length;
+        
+        // Calcular cuántas tarjetas caben en la pantalla
+        function getVisibleCards() {
+            const containerWidth = document.querySelector('.brands-wrapper').offsetWidth;
+            const cardWidth = 280 + 32; // ancho de tarjeta + gap
+            return Math.floor(containerWidth / cardWidth);
+        }
+
+        function updateButtons() {
+            const prevBtn = document.querySelector('.nav-button.prev');
+            const nextBtn = document.querySelector('.nav-button.next');
+            const visibleCards = getVisibleCards();
+            
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex >= totalCards - visibleCards;
+        }
+
+        function scrollBrands(direction) {
+            const visibleCards = getVisibleCards();
+            const cardWidth = 280 + 32; // ancho de tarjeta + gap
+            
+            if (direction === 'next' && currentIndex < totalCards - visibleCards) {
+                currentIndex += visibleCards;
+            } else if (direction === 'prev' && currentIndex > 0) {
+                currentIndex -= visibleCards;
+            }
+            
+            // Asegurar que no se pase del límite
+            currentIndex = Math.max(0, Math.min(currentIndex, totalCards - visibleCards));
+            
+            const offset = -currentIndex * cardWidth;
+            brandsGrid.style.transform = `translateX(${offset}px)`;
+            updateButtons();
+        }
+
+        // Actualizar al cambiar tamaño de ventana
+        window.addEventListener('resize', () => {
+            currentIndex = 0;
+            brandsGrid.style.transform = 'translateX(0)';
+            updateButtons();
+        });
+
+        // Inicializar botones
+        updateButtons();
+
+        // Efecto de scroll suave en navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>    
+</html>
