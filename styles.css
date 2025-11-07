@@ -19,8 +19,6 @@ header {
     z-index: 1000;
 }
 
-
-
 .nav-container {
     max-width: 1400px;
     margin: 0 auto;
@@ -133,6 +131,254 @@ nav ul li a:hover::after {
     margin: 3rem auto;
     padding: 0 2rem;
 }
+/* Marcas */
+.main-container-form{
+    max-width: 1345px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+    width: 80%;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.filters-bar {
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.filters-bar input[type="text"] {
+    padding: 0.7rem 1.4rem;
+    border-radius: 22px;
+    border: 1.5px solid #667eea;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.filters-bar input[type="text"]:focus {
+    border: 1.7px solid #764ba2;
+}
+
+/* Modal de información de marca */
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(0,0,20,0.72);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    max-width: 420px;
+    width: 95vw;
+    position: relative;
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px; right: 22px;
+    font-size: 2rem;
+    color: #667eea;
+    cursor: pointer;
+}
+
+.more-info-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 0.6rem 1.2rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.3s;
+}
+
+.more-info-btn:hover {
+    background: #764ba2;
+}
+
+
+/*Form*/
+.login-container {
+    background: linear-gradient(#c8f8ff,#ffffff);
+    padding: 30px;
+    border-radius: 10px;
+    width: 40%;
+    height: 90%;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #686868;
+    background-color:#ffffff;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+.link-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.link-text a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-text a:hover {
+    text-decoration: underline;
+}
+
+
+/* Contacto */
+
+.contenedor-1 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.item {
+    background: rgba(10, 24, 80, 0.6);
+    color: white;
+    text-align: center;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.item h1 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+    color: #a3b3ff;
+}
+
+.item p {
+    font-size: 1rem;
+    line-height: 2; 
+    margin-bottom: 1rem;
+}
+
+.social-lista {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.social-lista li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.social-lista li a:hover {
+    background: #667eea;
+    transform: scale(1.2) rotate(10deg);
+}
+
+.contact-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.contact-info .icon {
+    font-size: 1.5rem;
+}
+.contact-info p {
+    margin: 0;
+}
+
+.map-container {
+    width: 100%;
+    height: 200px; 
+    border-radius: 15px;
+    overflow: hidden; 
+    margin-top: auto; 
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tagline {
+    font-style: italic;
+    font-weight: 600;
+    color: #a3b3ff;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1.5rem;
+    margin-top: auto;
+    margin-bottom: 0;
+}
 
 .hero-section {
     position: relative;
@@ -224,8 +470,6 @@ nav ul li a:hover::after {
     z-index: 1;
 }
 
-
-
 .brands-container {
     position: relative;
     margin-bottom: 3rem;
@@ -242,6 +486,15 @@ nav ul li a:hover::after {
     gap: 2rem;
     transition: transform 0.5s ease;
     padding: 0 2rem;
+}
+
+.brands-grid-marcas {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 por fila */
+    gap: 2rem;
+    width: 100%;
+    padding: 0 2rem;
+    justify-items: center;
 }
 
 .nav-button {
@@ -399,22 +652,6 @@ nav ul li a:hover::after {
     display: none;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .nav-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    nav ul {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .brands-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
 .ofertas-principal {
     background: linear-gradient(to right, #000 0%, #011158 15%, #003366 50%, #011158 85%, #000 100%);
