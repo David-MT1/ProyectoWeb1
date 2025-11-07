@@ -1,404 +1,534 @@
-/* Filtros */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #000 0%, #011158 15%, #003366 50%, #011158 85%, #000 100%);
+    min-height: 100vh;
+}
+
+
+/* HEADER Y NAVEGACIÓN */
+
+header {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-family: Impact, cursive, 'Arial Narrow Bold', sans-serif;
+    font-size: 1.8rem;
+    color: #000000;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-icon img {
+    width: 90px;
+    height: 60px;
+    object-fit: contain;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #667eea;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #667eea;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.user-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-actions button {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.btn-login {
+    background: transparent;
+    color: #667eea;
+    border: 2px solid #667eea;
+}
+
+.btn-login:hover {
+    background: #667eea;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.btn-signup {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-signup:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+/* CONTENEDOR PRINCIPAL */
+.main-container {
+    max-width: 1400px;
+    margin: 3rem auto;
+    padding: 0 2rem 4rem;
+}
+
+.section-title {
+    text-align: center;
+    color: white;
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* BARRA DE BÚSQUEDA */
 .filters-bar {
     width: 100%;
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-end;
+    margin-bottom: 3rem;
 }
 
 .filters-bar input[type="text"] {
-    padding: 0.7rem 1.4rem;
-    border-radius: 22px;
-    border: 1.5px solid #667eea;
+    padding: 0.9rem 1.8rem;
+    border-radius: 30px;
+    border: 2px solid #667eea;
     font-size: 1rem;
     outline: none;
-    transition: border 0.2s ease;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 450px;
+    background: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
 
 .filters-bar input[type="text"]:focus {
-    border: 1.7px solid #764ba2;
+    border: 2px solid #764ba2;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.35);
+    transform: translateY(-2px);
 }
 
-/* Modal de información de marca */
+.filters-bar input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* grid de marcas*/
+.brands-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+/* tarjetas */
+.brand-card {
+    background: white;
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(102, 126, 234, 0.4);
+}
+
+/*imagen de marca */
+.brand-image {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-image img {
+    max-width: 65%;
+    max-height: 65%;
+    object-fit: contain;
+    transition: transform 0.4s ease;
+    position: relative;
+    z-index: 2;
+    filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.1));
+}
+
+.brand-card:hover .brand-image img {
+    transform: scale(1.15) rotate(2deg);
+}
+
+/* Efecto de brillo al pasar el mouse */
+.brand-image::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -150%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.5) 50%,
+        transparent 70%
+    );
+    transform: rotate(45deg);
+    transition: left 0.6s ease;
+    z-index: 1;
+}
+
+.brand-card:hover .brand-image::before {
+    left: 150%;
+}
+
+/* INFORMACION DE MARCA*/
+.brand-info {
+    padding: 1.8rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex-grow: 1;
+}
+
+.brand-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+
+.brand-desc {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin: 0;
+    flex-grow: 1;
+}
+
+/* BOTÓN VER MAS */
+.more-info-btn {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 1.8rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.more-info-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+}
+
+.more-info-btn:active {
+    transform: translateY(-1px);
+}
+
+/* MODAL*/
 .modal {
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0,0,20,0.72);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 30, 0.85);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
+    backdrop-filter: blur(8px);
 }
 
 .modal-content {
     background: white;
-    padding: 2.5rem 2rem;
-    border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
-    max-width: 420px;
-    width: 95vw;
+    padding: 3rem 2.5rem;
+    border-radius: 30px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    max-width: 550px;
+    width: 90vw;
     position: relative;
     text-align: center;
+    animation: modalSlideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .close-btn {
     position: absolute;
-    top: 15px; right: 22px;
-    font-size: 2rem;
+    top: 20px;
+    right: 25px;
+    font-size: 2.2rem;
     color: #667eea;
     cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    line-height: 1;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.more-info-btn {
-    background: #667eea;
+.close-btn:hover {
+    color: #764ba2;
+    transform: rotate(90deg) scale(1.1);
+}
+
+#modalBrandName {
+    color: #333;
+    font-size: 2.2rem;
+    margin-bottom: 1.2rem;
+    font-weight: bold;
+}
+
+#modalBrandDesc {
+    color: #666;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0;
+}
+
+/* Tarjeta Próximamente */
+
+.coming-soon .brand-image {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+}
+
+.coming-soon-plus {
+    font-size: 6rem;
     color: white;
-    border: none;
-    border-radius: 18px;
-    padding: 0.6rem 1.2rem;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: background 0.3s;
+    font-weight: 200;
+    animation: pulse 2s infinite;
 }
 
-.more-info-btn:hover {
-    background: #764ba2;
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
-* {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.coming-soon .brand-name {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to right, #000 0%, #011158 15%, #003366 50%, #011158 85%, #000 100%);
-            min-height: 100vh;
-        }
+/*RESPONSIVE DESIGN */
 
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.98);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
+/* Tablets grandes */
+@media (max-width: 1200px) {
+    .brands-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 
-        
+    .section-title {
+        font-size: 2.4rem;
+    }
 
-        .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.2rem 2rem;
-        }
+    .nav-container {
+        padding: 1rem 1.5rem;
+    }
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-family:Impact, cursive, 'Arial Narrow Bold', sans-serif;
-            font-size: 1.8rem;
-            color: #000000;
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
+/* Tablets */
+@media (max-width: 900px) {
+    .nav-container {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+    nav ul {
+        gap: 1.5rem;
+    }
 
-        .logo-icon img{
-            width: 90px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
+    .brands-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.8rem;
+    }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-            align-items: flex-start;
-        }
+    .section-title {
+        font-size: 2.2rem;
+        margin-bottom: 1.5rem;
+    }
 
-        nav ul li a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            font-size: 1.05rem;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+    .filters-bar input[type="text"] {
+        max-width: 100%;
+    }
+}
 
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #667eea;
-            transition: width 0.3s ease;
-        }
+/* Móviles */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
 
-        nav ul li a:hover {
-            color: #667eea;
-        }
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+    }
 
-        nav ul li a:hover::after {
-            width: 100%;
-        }
+    .user-actions {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 
-        .user-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
+    .brands-grid {
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 1.5rem;
+    }
 
-        .user-actions button {
-            padding: 0.7rem 1.5rem;
-            border: none;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
+    .main-container {
+        padding: 0 1rem 3rem;
+        margin: 2rem auto;
+    }
 
-        .btn-login {
-            background: transparent;
-            color: #667eea;
-            border: 2px solid #667eea;
-        }
+    .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 1.5rem;
+    }
 
-        .btn-login:hover {
-            background: #667eea;
-            color: white;
-        }
+    .logo {
+        font-size: 1.5rem;
+    }
 
-        .btn-signup {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
+    .logo-icon img {
+        width: 70px;
+        height: 50px;
+    }
 
-        .btn-signup:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
+    .brand-image {
+        height: 180px;
+    }
 
-        /* Main Content */
-        .main-container {
-            max-width: 1345px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
+    .brand-info {
+        padding: 1.3rem;
+    }
 
-        .section-title {
-            text-align: center;
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
+    .brand-name {
+        font-size: 1.3rem;
+    }
 
-        /* Brands Grid */
-        .brands-container {
-            position: relative;
-            margin-bottom: 3rem;
-            width: 100%;
-        }
+    .brand-desc {
+        font-size: 0.9rem;
+    }
 
-        .brands-wrapper {
-            overflow: hidden;
-            width: 100%;
-        }
+    .more-info-btn {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    }
 
-        .brands-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 por fila */
-            gap: 2rem;
-            width: 100%;
-            padding: 0 2rem;
-            justify-items: center;
-        }
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
 
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.6);
-            transition: all 0.3s ease;
-            z-index: 10;
-            opacity: 0.4;
-        }
+    #modalBrandName {
+        font-size: 1.8rem;
+    }
 
-        .nav-button:hover {
-            background: rgba(255, 255, 255, 0.9);
-            color: #667eea;
-            opacity: 1;
-            transform: translateY(-50%) scale(1.05);
-        }
+    #modalBrandDesc {
+        font-size: 1rem;
+    }
+}
 
-        .nav-button.prev {
-            left: 10px;
-            color: black;
-            font-weight: bold;
-            
-        }
+/* Móviles muy pequeños */
+@media (max-width: 400px) {
+    .section-title {
+        font-size: 1.6rem;
+    }
 
-        .nav-button.next {
-            right: 10px;
-            color: black;
-            font-weight: bold;
-        }
+    .filters-bar input[type="text"] {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
 
-        .nav-button:disabled {
-            opacity: 0.1;
-            cursor: not-allowed;
-        }
-
-        .nav-button:disabled:hover {
-            background: rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-50%);
-            opacity: 0.1;
-        }
-
-        .brand-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            min-width: 280px;
-            max-width: 280px;
-            flex-shrink: 0;
-            text-decoration: none;
-            display: block;
-        }
-
-        .brand-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        .brand-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(135deg, #b7b7b7 0%, #ffffff 100%);
-        }
-
-        .brand-image img {
-            max-width: 70%;
-            max-height: 70%;
-            object-fit: contain;
-            transition: transform 0.3s ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .brand-card:hover .brand-image img {
-            transform: scale(1.1);
-        }
-
-        .brand-image::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s ease;
-            z-index: 1;
-        }
-
-        .brand-card:hover .brand-image::before {
-            left: 100%;
-        }
-
-        .brand-tooltip {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 1.2rem 2rem;
-            border-radius: 15px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease, transform 0.4s ease;
-            z-index: 3;
-            white-space: nowrap;
-            backdrop-filter: blur(10px);
-        }
-
-        .brand-image:hover .brand-tooltip {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1.05);
-        }
-
-        .brand-info {
-            padding: 1rem;
-            pointer-events: none;
-        }
-
-        .brand-name {
-            font-size: 1.3rem;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-        }
-
-        .btn-explore {
-            display: none;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .brands-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .brand-card {
+        border-radius: 20px;
+    }
+}
