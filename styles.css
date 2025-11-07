@@ -132,15 +132,13 @@ nav ul li a:hover::after {
     padding: 0 2rem;
 }
 /* Marcas */
-.main-container-form{
-    max-width: 1345px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-    width: 80%;
-    height: 90%;
+.main-container-form {
+    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
+    min-height: 80vh;
+    background: linear-gradient(to right, #000 0%, #011158 15%, #003366 50%, #011158 85%, #000 100%);
+    padding: 40px 0;
 }
 
 .filters-bar {
@@ -213,37 +211,44 @@ nav ul li a:hover::after {
 
 /*Form*/
 .login-container {
-    background: linear-gradient(#c8f8ff,#ffffff);
+    background: linear-gradient(to right, #000 0%, #000103 15%, #000145 50%, #000224 85%, #000 100%);
     padding: 30px;
     border-radius: 10px;
     width: 40%;
     height: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
-h2 {
+.login-container h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #a3b3ff;
     text-align: center;
-    margin-bottom: 30px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
-label {
+.form-group label {
     display: block;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #d0d8ff;
 }
 
-input {
+.form-group input {
     width: 100%;
-    padding: 8px;
-    border: 2px solid #686868;
-    background-color:#ffffff;
-    border-radius: 5px;
-    font-size: 14px;
+    padding: 12px 14px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    transition: all 0.3s ease;
 }
 
 button {
@@ -266,6 +271,7 @@ button:hover {
     text-align: center;
     font-size: 14px;
     margin-top: 10px;
+    color: #ffff;
 }
 
 .link-text a {
@@ -906,7 +912,7 @@ button:hover {
     position: absolute;
     top: 15px;
     left: 15px;
-    background: linear-gradient(135deg, #ff841f, #ff7350);
+    background: linear-gradient(135deg, #0044a2, #060029);
     color: white;
     padding: 8px 16px;
     border-radius: 10px;
@@ -978,7 +984,7 @@ button:hover {
 }
 
 .precio-actual {
-    color: #ff6b6b;
+    color: #030303;
     font-size: 29px;
     font-weight: 900;
 }
