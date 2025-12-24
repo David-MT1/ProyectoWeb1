@@ -1382,3 +1382,17 @@ aside summary {
     backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
     background-color: rgba(0, 0, 0, 0.6);
 }
+
+.temporizador-numero {
+    font-variant-numeric: tabular-nums; /* Mantiene los números con el mismo ancho */
+    min-width: 1.5em;
+    display: inline-block;
+}
+
+.boton-comprar {
+    transition: all 0.3s ease;
+}
+
+.boton-comprar:active {
+    transform: scale(0.95);
+}
