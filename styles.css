@@ -1364,3 +1364,35 @@ aside summary {
     cursor: pointer;
     font-weight: bold;
 }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Asegúrate de que el modal se vea por encima de todo */
+.modal {
+    z-index: 2000;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.temporizador-numero {
+    font-variant-numeric: tabular-nums; /* Mantiene los números con el mismo ancho */
+    min-width: 1.5em;
+    display: inline-block;
+}
+
+.boton-comprar {
+    transition: all 0.3s ease;
+}
+
+.boton-comprar:active {
+    transform: scale(0.95);
+}
