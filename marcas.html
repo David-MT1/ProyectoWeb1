@@ -223,26 +223,6 @@
         <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
     </div>
     </footer>
-
-    <script>
-        // Filtrar marcas por búsqueda
-        document.getElementById('brandSearch').addEventListener('input', function(e) {
-            let val = e.target.value.toLowerCase();
-            document.querySelectorAll('.brand-card').forEach(card => {
-                const name = card.querySelector('.brand-name').textContent.toLowerCase();
-                card.style.display = name.includes(val) ? '' : 'none';
-            });
-        });
-
-        // Modal funciones
-        function showBrandModal(nombre, descripcion) {
-            document.getElementById('modalBrandName').textContent = nombre;
-            document.getElementById('modalBrandDesc').textContent = descripcion;
-            document.getElementById('brandModal').style.display = 'flex';
-        }
-        function closeBrandModal() {
-            document.getElementById('brandModal').style.display = 'none';
-        }
-    </script>
+    <script src="js/marcas.js"></script>
 </body>
 </html>
