@@ -6,20 +6,33 @@ const cantidad = 9;
 const cajaProductos = document.getElementById('lista-productos');
 const textoPagina = document.getElementById('numero-pagina');
 
-fetch('productos.json')
+// Cargar productos desde el Backend
+fetch('/api/products')
     .then(res => res.json())
-    .then(datosJSON => {
-        const productosNuevos = JSON.parse(localStorage.getItem('misProductos')) || [];
-        
-        productos = [...datosJSON, ...productosNuevos];
-        
+    .then(data => {
+        // Mapear los datos de la DB a la estructura que espera el frontend
+        // DB: id, nombre, precio, imagen_url, ...
+        // Frontend espera: id, nombre, precio, imagen ...
+
+        productos = data.map(p => ({
+            id: p.id,
+            nombre: p.nombre,
+            precio: parseFloat(p.precio),
+            imagen: p.imagen_url || "https://via.placeholder.com/300", // Fallback image
+            categoria: p.categoria,
+            genero: p.genero,
+            marca: p.marca,
+            descripcion: p.descripcion
+        }));
+
         filtrados = productos;
         mostrarTienda();
-    });
+    })
+    .catch(err => console.error("Error cargando productos:", err));
 
 function mostrarTienda() {
     cajaProductos.innerHTML = "";
-    
+
     let inicio = (pagina - 1) * cantidad;
     let fin = inicio + cantidad;
     let visibles = filtrados.slice(inicio, fin);
@@ -48,7 +61,7 @@ document.querySelectorAll('.opcion').forEach(boton => {
         let valorFiltro = e.target.innerText;
 
         filtrados = productos.filter(p => p[categoriaFiltro] === valorFiltro);
-        pagina = 1; 
+        pagina = 1;
         mostrarTienda();
     };
 });

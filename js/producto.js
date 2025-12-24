@@ -3,15 +3,20 @@ const productoId = urlParams.get('id');
 
 // 2. Cargar los datos (JSON + LocalStorage)
 async function cargarProducto() {
-    const respuesta = await fetch('productos.json');
-    const productosJSON = await respuesta.json();
-    
-    // Unir con los productos que agregaste desde el admin
-    const productosAdmin = JSON.parse(localStorage.getItem('misProductos')) || [];
-    const todosLosProductos = [...productosJSON, ...productosAdmin];
+    // 2. Cargar los datos desde el Backend
+    // Idealmente tendrías un endpoint /api/products/<id>, pero por simplicidad filtramos aquí
+    const respuesta = await fetch('/api/products');
+    const todosLosProductos = await respuesta.json();
+
+    // Normalizar datos (mapear imagen_url a imagen)
+    const productosNormalizados = todosLosProductos.map(p => ({
+        ...p,
+        imagen: p.imagen_url,
+        precio: parseFloat(p.precio)
+    }));
 
     // 3. Buscar el producto específico
-    const p = todosLosProductos.find(item => item.id == productoId);
+    const p = productosNormalizados.find(item => item.id == productoId);
 
     if (p) {
         document.getElementById('detalle-producto').innerHTML = `
