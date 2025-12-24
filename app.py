@@ -97,7 +97,18 @@ def login():
     cursor.close()
     conn.close()
 
-    if user and check_password_hash(user['password_hash'], password):
+    print(f"DEBUG LOGIN: Email recibido: {usuario_or_email}")
+    
+    if not user:
+        print("DEBUG LOGIN: Usuario NO encontrado en DB")
+        return jsonify({"success": False, "message": "DEBUG: Correo no registrado"}), 401
+
+    print(f"DEBUG LOGIN: Usuario encontrado: {user['nombre']}, Hash: {user['password_hash'][:20]}...")
+    
+    is_valid = check_password_hash(user['password_hash'], password)
+    print(f"DEBUG LOGIN: Contraseña válida: {is_valid}")
+
+    if user and is_valid:
         # Login exitoso
         session['user_id'] = user['id']
         session['nombre'] = user['nombre']
@@ -106,7 +117,7 @@ def login():
         destino = "adminAgregarProductos.html" if user['rol'] == 'admin' else "index.html"
         return jsonify({"success": True, "redirect": destino, "nombre": user['nombre']})
     
-    return jsonify({"success": False, "message": "Correo o contraseña incorrectos"}), 401
+    return jsonify({"success": False, "message": "DEBUG: Contraseña incorrecta"}), 401
 
 # --- API PRODUCTOS ---
 
