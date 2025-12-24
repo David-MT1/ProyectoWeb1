@@ -29,42 +29,8 @@
         </div>
     </header>
 
-    <main class="contenedor-tienda">
-        <aside class="filtros">
-            <h2>Filtros</h2>
-            <details open>
-                <summary>Género</summary>
-                <p class="opcion" data-filtro="genero">Hombre</p>
-                <p class="opcion" data-filtro="genero">Mujer</p>
-                <p class="opcion" data-filtro="genero">Niño</p>
-            </details>
-            <details open>
-                <summary>Deporte</summary>
-                <p class="opcion" data-filtro="deporte">Fútbol</p>
-                <p class="opcion" data-filtro="deporte">Running</p>
-                <p class="opcion" data-filtro="deporte">Básquet</p>
-            </details>
-            <details open>
-                <summary>Marca</summary>
-                <p class="opcion" data-filtro="marca">Nike</p>
-                <p class="opcion" data-filtro="marca">Adidas</p>
-                <p class="opcion" data-filtro="marca">Puma</p>
-            </details>
-            <button id="boton-limpiar">Mostrar todo</button>
-        </aside>
-
-        <section class="seccion-derecha">
-            <div id="lista-productos" class="cuadricula">
-                </div>
-
-            <div class="controles">
-                <button id="atras">Anterior</button>
-                <span id="numero-pagina">Página 1</span>
-                <button id="adelante">Siguiente</button>
-            </div>
-        </section>
-    </main>
-
+    <div id="detalle-producto" class="detalle-container">
+    </div>
     <footer class="footer">
     <div class="footer-container">
         <div class="footer-column">
@@ -109,6 +75,7 @@
     </div>
     </footer>
 <script src="scriptProductos.js"></script>
+<script src="producto.js"></script>
 </body>
 </html>
 

@@ -42,3 +42,31 @@ function verCarrito() {
 mostrarProductos();
 agregarAlCarrito("Laptop - $500");
 verCarrito();
+
+
+
+
+
+
+
+
+
+
+
+
+
+const menuBtn = document.getElementById('mobile-menu');
+const nav = document.getElementById('navegacion');
+
+menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('active');
+    menuBtn.classList.toggle('open');
+});
+
+// Cerrar al hacer clic en un enlace (opcional)
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', () => {
+        nav.classList.remove('active');
+        menuBtn.classList.remove('open');
+    });
+});
