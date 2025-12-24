@@ -108,6 +108,64 @@ def login():
     
     return jsonify({"success": False, "message": "Correo o contraseña incorrectos"}), 401
 
+# --- API PRODUCTOS ---
+
+@app.route('/api/products', methods=['GET'])
+def get_products():
+    conn = get_db_connection()
+    if not conn:
+        return jsonify({"success": False, "message": "Error conexión DB"}), 500
+    
+    cursor = conn.cursor(dictionary=True)
+    try:
+        cursor.execute("SELECT * FROM productos")
+        productos = cursor.fetchall()
+        return jsonify(productos)
+    except mysql.connector.Error as err:
+        return jsonify({"success": False, "message": str(err)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
+@app.route('/api/products', methods=['POST'])
+def add_product():
+    # Verificar si usuario es admin (opcional: mejorar seguridad con tokens)
+    # Por ahora confiamos en la sesión si está activa y es admin
+    if 'user_id' not in session or session.get('rol') != 'admin':
+        return jsonify({"success": False, "message": "No autorizado"}), 403
+
+    data = request.json
+    try:
+        conn = get_db_connection()
+        if not conn:
+            return jsonify({"success": False, "error": "Error de conexión"}), 500
+            
+        cursor = conn.cursor()
+        query = """INSERT INTO productos (nombre, precio, descripcion, imagen_url, genero, categoria, deporte, marca) 
+                   VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""
+        values = (
+            data['nombre'], 
+            data['precio'], 
+            data['descripcion'], 
+            data['imagen'], # Nota: en frontend se llama "imagen", en DB "imagen_url"
+            data['genero'], 
+            data['categoria'], 
+            data['deporte'], 
+            data['marca']
+        )
+        
+        cursor.execute(query, values)
+        conn.commit()
+        return jsonify({"success": True, "message": "Producto agregado correctamente"}), 201
+        
+    except mysql.connector.Error as err:
+        return jsonify({"success": False, "message": str(err)}), 500
+    except KeyError as e:
+        return jsonify({"success": False, "message": f"Falta campo: {str(e)}"}), 400
+    finally:
+        if 'cursor' in locals(): cursor.close()
+        if 'conn' in locals(): conn.close()
+
 @app.route('/api/logout')
 def logout():
     session.clear()

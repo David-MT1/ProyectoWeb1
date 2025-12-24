@@ -1,7 +1,5 @@
 -- Script de creación de Base de Datos para Champions Wear
-
-CREATE DATABASE IF NOT EXISTS mi_base;
-USE mi_base;
+-- Se usarán las tablas en la base de datos conectada (ej. 'railway')
 
 -- 1. Tabla de Usuarios
 CREATE TABLE IF NOT EXISTS usuarios (
