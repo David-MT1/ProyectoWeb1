@@ -45,16 +45,6 @@ verCarrito();
 
 
 
-
-
-
-
-
-
-
-
-
-
 const menuBtn = document.getElementById('mobile-menu');
 const nav = document.getElementById('navegacion');
 

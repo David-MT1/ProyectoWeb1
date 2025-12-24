@@ -321,26 +321,35 @@ button:hover {
 
 .contenedor-1 {
     display: grid;
+    /* Esto intentará poner tantos elementos como quepan de 320px */
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 40px;
     padding: 64px 32px;
     max-width: 1400px;
-    height: 700px;
     margin: 0 auto;
-    justify-content: space-around;
+    /* ESTO CENTRA LOS ELEMENTOS SI NO LLENAN TODA LA FILA */
+    justify-content: center; 
+    align-items: start;
 }
 
 .item {
     background: white;
-    color: black;
-    text-align: center;
     border-radius: 20px;
-    padding: 40px 32px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    flex-direction: column;
+    height: auto; /* Que mida lo que necesite su contenido */
+}
+
+.item form {
     display: flex;
     flex-direction: column;
-    transition: all 0.3s ease;
+    gap: 15px;
+    width: 100%;
 }
 
 .item:hover {
@@ -1656,4 +1665,109 @@ summary::after {
 
 .boton-comprar:active {
     transform: scale(0.95);
+}
+
+.formulario-estilizado {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: left;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.grupo-input input, 
+.grupo-input textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Evita que el input se salga del cuadro */
+}
+
+.grupo-input label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #333;
+}
+
+
+/* Efecto cuando haces clic para escribir */
+.grupo-input input:focus, 
+.grupo-input textarea:focus {
+    outline: none;
+    border-color: #011158; /* Color azul de tu marca */
+}
+
+.btn-enviar {
+    background-color: #011158;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.btn-enviar:hover {
+    background-color: #003366;
+    transform: translateY(-2px);
+}
+
+.btn-enviar:active {
+    transform: translateY(0);
+}
+
+/* Mensaje de éxito */
+#formStatus {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 6px;
+    display: none; /* Se activa con JS */
+}
+
+.form-success {
+    display: block !important;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+input, textarea {
+    width: 100%;
+    max-width: 100%; /* Evita que se salgan del cuadro blanco */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+.formulario-item {
+    grid-column: 1 / -1; /* Esto hace que ocupe TODO el ancho horizontal */
+    max-width: 600px;    /* Pero limitamos su ancho para que no se vea gigante */
+    margin: 0 auto;      /* Y lo centramos */
+}
+
+.item-formulario {
+    /* En pantallas grandes, hace que el item salte a una nueva fila y se centre */
+    grid-column: 1 / -1; 
+    justify-self: center; 
+    
+    width: 100%;
+    max-width: 500px; /* Controla qué tan ancho quieres el formulario */
+}
+
+.item-formulario h1, 
+.item-formulario p {
+    text-align: center;
+}
+
+.formulario-estilizado {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Hace que los inputs ocupen el ancho del form */
 }
