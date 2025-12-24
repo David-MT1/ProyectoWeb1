@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contactos</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <div class="nav-container">
             <a href="#" class="logo">
                 <div class="logo-icon"><img src="logo.png"></div>
-                    Champions Wear
+                Champions Wear
             </a>
-            
+
             <nav>
                 <ul>
-                    <li><a href="#inicio"><a href="index.html">Inicio</a></a></li>
-                    <li><a href="#marcas"><a href="marcas.html">Marcas</a></a></li>
-                    <li><a href="#ofertas"><a href="ofertas.html">Ofertas</a></a></li>
-                    <li><a href="#novedades"><a href="novedades.html">Novedades</a></a></li>
-                    <li><a href="#contacto"><a href="contacto.html">Contacto</a></a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="marcas.html">Marcas</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="novedades.html">Novedades</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
 
@@ -31,120 +34,119 @@
         </div>
     </header>
     <main>
-    <div class="contenedor-1">
-        <div class="item">
-            <h1>REDES SOCIALES</h1>
-            <p>Síguenos para no perderte ninguna de nuestras novedades y ofertas exclusivas.</p>
-            <ul class="social-lista">
-                <li><a href="#" aria-label="Facebook">📘</a></li>
-                <li><a href="#" aria-label="Instagram">📸</a></li>
-                <li><a href="#" aria-label="Tiktok">🎵</a></li>
-                <li><a href="#" aria-label="Youtube">📺</a></li>
-            </ul>
-        </div>
-
-        <div class="item">
-            <h1>CONTACTO Y UBICACIÓN</h1>
-            <div class="contact-info">
-                <span class="icon">📞</span>
-                <p>+51 993 063 564</p>
+        <div class="contenedor-1">
+            <div class="item">
+                <h1>REDES SOCIALES</h1>
+                <p>Síguenos para no perderte ninguna de nuestras novedades y ofertas exclusivas.</p>
+                <ul class="social-lista">
+                    <li><a href="#" aria-label="Facebook">📘</a></li>
+                    <li><a href="#" aria-label="Instagram">📸</a></li>
+                    <li><a href="#" aria-label="Tiktok">🎵</a></li>
+                    <li><a href="#" aria-label="Youtube">📺</a></li>
+                </ul>
             </div>
-            <div class="contact-info">
-                <span class="icon">📍</span>
-                <p>Encuéntranos en el corazón de Arequipa.</p>
+
+            <div class="item">
+                <h1>CONTACTO Y UBICACIÓN</h1>
+                <div class="contact-info">
+                    <span class="icon">📞</span>
+                    <p>+51 993 063 564</p>
+                </div>
+                <div class="contact-info">
+                    <span class="icon">📍</span>
+                    <p>Encuéntranos en el corazón de Arequipa.</p>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122490.89311142953!2d-71.59325883852538!3d-16.40396016301777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a487785b9b3%3A0x13a216536b6a2c20!2sArequipa!5e0!3m2!1ses-419!2spe!4v1668143219803!5m2!1ses-419!2spe"
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
             </div>
-            <div class="map-container">
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122490.89311142953!2d-71.59325883852538!3d-16.40396016301777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a487785b9b3%3A0x13a216536b6a2c20!2sArequipa!5e0!3m2!1ses-419!2spe!4v1668143219803!5m2!1ses-419!2spe" 
-                    width="100%" 
-                    height="100%" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+
+            <div class="item">
+                <h1>SOBRE NOSOTROS</h1>
+                <p>
+                    <b>Champions Wear</b> es una tienda de ropa deportiva arequipeña dedicada a brindar estilo,
+                    comodidad y rendimiento. Cada colección refleja la fuerza y energía de nuestra ciudad blanca.
+                </p>
+                <p class="tagline">
+                    Una empresa de arequipeños, para arequipeños.
+                </p>
+            </div>
+
+            <div class="item">
+                <h1>ENVÍANOS UN MENSAJE</h1>
+                <form id="contactForm" class="formulario-estilizado">
+                    <div class="grupo-input">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="email">Correo</label>
+                        <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+                    </div>
+                    <div class="grupo-input">
+                        <label for="mensaje">Consulta</label>
+                        <textarea id="mensaje" rows="3" placeholder="¿En qué ayudamos?" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+                <div id="formStatus"></div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nosotros</h3>
+                <ul>
+                    <li><a href="#">Quiénes somos</a></li>
+                    <li><a href="#">Misión y visión</a></li>
+                    <li><a href="#">Equipo</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">Preguntas frecuentes</a></li>
+                    <li><a href="#">Envíos y devoluciones</a></li>
+                    <li><a href="#">Términos y condiciones</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <ul>
+                    <li><a href="#">Correo: ChampionsWear@gmail.com</a></li>
+                    <li><a href="#">Teléfono: +51 993 063 564</a></li>
+                    <li><a href="#">Ubicación: Arequipa, Perú</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column redes">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png"
+                            alt="Instagram"></a>
+                    <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
+                </div>
             </div>
         </div>
 
-        <div class="item">
-            <h1>SOBRE NOSOTROS</h1>
-            <p>
-                <b>Champions Wear</b> es una tienda de ropa deportiva arequipeña dedicada a brindar estilo, comodidad y rendimiento. Cada colección refleja la fuerza y energía de nuestra ciudad blanca.
-            </p>
-            <p class="tagline">
-                Una empresa de arequipeños, para arequipeños.
-            </p>
+        <div class="footer-bottom">
+            <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
         </div>
-
-        <div class="item">
-            <h1>ENVÍANOS UN MENSAJE</h1>
-            <form id="contactForm" class="formulario-estilizado">
-                <div class="grupo-input">
-                    <label for="nombre">Nombre</label>
-                    <input type="text" id="nombre" placeholder="Tu nombre" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="email">Correo</label>
-                    <input type="email" id="email" placeholder="correo@ejemplo.com" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="mensaje">Consulta</label>
-                    <textarea id="mensaje" rows="3" placeholder="¿En qué ayudamos?" required></textarea>
-                </div>
-                <button type="submit" class="btn-enviar">Enviar</button>
-            </form>
-            <div id="formStatus"></div>
-        </div>
-
-    </div>
-
-</main>
-
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-column">
-        <h3>Sobre Nosotros</h3>
-        <ul>
-            <li><a href="#">Quiénes somos</a></li>
-            <li><a href="#">Misión y visión</a></li>
-            <li><a href="#">Equipo</a></li>
-        </ul>
-        </div>
-
-        <div class="footer-column">
-        <h3>Ayuda</h3>
-        <ul>
-            <li><a href="#">Preguntas frecuentes</a></li>
-            <li><a href="#">Envíos y devoluciones</a></li>
-            <li><a href="#">Términos y condiciones</a></li>
-        </ul>
-        </div>
-
-        <div class="footer-column">
-        <h3>Contacto</h3>
-        <ul>
-            <li><a href="#">Correo: ChampionsWear@gmail.com</a></li>
-            <li><a href="#">Teléfono: +51 993 063 564</a></li>
-            <li><a href="#">Ubicación: Arequipa, Perú</a></li>
-        </ul>
-        </div>
-
-        <div class="footer-column redes">
-        <h3>Síguenos</h3>
-        <div class="social-icons">
-            <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
-            <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
-        </div>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
-    </div>
     </footer>
     <script src="js/contacto.js"></script>
 
-    
+
 </body>
+
 </html>
