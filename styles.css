@@ -17,6 +17,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.4s ease;
 }
 
 .nav-container {
@@ -26,6 +27,11 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 2rem;
+}
+
+#scrollTopBtn:hover {
+    background: #764ba2 !important;
+    transform: scale(1.1);
 }
 
 .logo {
@@ -502,15 +508,46 @@ button:hover {
 
 .scroll-content {
     position: relative;
-    padding: 100px 40px;
-    min-height: 100vh;
+    padding: 100px 40px 0px 40px; 
+    min-height: auto;  
     z-index: 1;
+    margin-bottom: 20px; 
 }
 
 .brands-container {
     position: relative;
     margin-bottom: 3rem;
     width: 100%;
+}
+
+.brands-container-full {
+    width: 100%;
+    max-width: 1400px; /* Ancho máximo de tu página */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.brands-grid-3 {
+    display: flex;
+    gap: 30px; /* Espacio entre marcas */
+    justify-content: space-between;
+    width: 100%;
+}
+
+/* Ajuste de las tarjetas para que crezcan */
+.brands-grid-3 .brand-card {
+    flex: 1; /* Esto hace que las 3 ocupen el mismo ancho */
+    min-width: 0; /* Evita que las imágenes desborden en pantallas pequeñas */
+    max-width: 100%;
+    margin: 0;
+    /* Mantén tus estilos previos de bordes, sombras, etc. */
+}
+
+/* Responsivo: Si la pantalla es muy pequeña, ponerlas una debajo de otra */
+@media (max-width: 768px) {
+    .brands-grid-3 {
+        flex-direction: column;
+    }
 }
 
 .brands-wrapper {
@@ -1061,6 +1098,17 @@ button:hover {
     z-index: 1;
 }
 
+.banner-contenido input[type="email"] {
+    outline: none;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.banner-contenido input[type="email"]:focus {
+    transform: scale(1.02);
+}
+
 .banner-contenido h2 {
     font-size: 56px;
     font-weight: 900;
@@ -1510,49 +1558,102 @@ summary::after {
     border-bottom: 1px solid #eee;
 }
 
-.descripcion-texto {
-    line-height: 1.8;
-    color: #555;
-    margin-bottom: 40px;
-    font-size: 17px;
+.features-section {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    background: white;
+    margin-top: 40px;
+    text-align: center;
 }
 
-/* Botón de Carrito Mejorado */
-.btn-comprar {
-    background: #000;
-    color: #fff;
+.feature-item h3 {
+    color: #003366;
+    margin: 10px 0;
+}
+
+.feature-icon {
+    font-size: 2.5rem;
+}
+
+/* Grid de Categorías */
+.categories-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    padding: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.category-card {
+    height: 400px;
+    border-radius: 15px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Puedes usar imágenes de Unsplash como placeholder */
+.category-card.calzado { background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff'); }
+.category-card.ropa { background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438'); }
+
+.category-card:hover {
+    transform: translateY(-5px);
+}
+
+.category-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.btn-shop {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #667eea;
     border: none;
-    padding: 20px 40px;
-    font-size: 16px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-radius: 50px;
+    color: white;
+    border-radius: 25px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Asegúrate de que el modal se vea por encima de todo */
+.modal {
+    z-index: 2000;
+    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.temporizador-numero {
+    font-variant-numeric: tabular-nums; /* Mantiene los números con el mismo ancho */
+    min-width: 1.5em;
+    display: inline-block;
+}
+
+.boton-comprar {
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-.btn-comprar:hover {
-    background: #333;
-    transform: translateY(-3px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.2);
-}
-
-.btn-comprar:active {
-    transform: translateY(0);
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-    .detalle-container {
-        grid-template-columns: 1fr;
-        margin: 20px;
-        gap: 30px;
-        padding: 20px;
-    }
-
-    .info-header h1 {
-        font-size: 30px;
-    }
+.boton-comprar:active {
+    transform: scale(0.95);
 }
