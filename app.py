@@ -177,6 +177,31 @@ def user_info():
         return jsonify({"logged_in": True, "nombre": session['nombre'], "rol": session['rol']})
     return jsonify({"logged_in": False})
 
+@app.route('/api/contact', methods=['POST'])
+def contact():
+    data = request.json
+    nombre = data.get('nombre')
+    email = data.get('email')
+    mensaje = data.get('mensaje')
+
+    if not nombre or not email or not mensaje:
+        return jsonify({"success": False, "message": "Todos los campos son obligatorios"}), 400
+
+    conn = get_db_connection()
+    if not conn:
+        return jsonify({"success": False, "message": "Error de conexión a base de datos"}), 500
+
+    cursor = conn.cursor()
+    try:
+        cursor.execute("INSERT INTO contactos (nombre, email, mensaje) VALUES (%s, %s, %s)", (nombre, email, mensaje))
+        conn.commit()
+        return jsonify({"success": True, "message": "Mensaje enviado exitosamente"})
+    except mysql.connector.Error as err:
+        return jsonify({"success": False, "message": str(err)}), 500
+    finally:
+        cursor.close()
+        conn.close()
+
 @app.route('/api/health')
 def health_check():
     return jsonify({"status": "ok", "backend": "Python/Flask"})

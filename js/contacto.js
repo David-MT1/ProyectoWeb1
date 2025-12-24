@@ -9,23 +9,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Obtener valores
             const nombre = document.getElementById('nombre').value;
+            const email = document.getElementById('email').value;
+            const mensaje = document.getElementById('mensaje').value;
 
             // Simular carga
             const btn = contactForm.querySelector('button[type="submit"]');
             btn.innerText = "Enviando...";
             btn.disabled = true;
 
-            setTimeout(() => {
-                // Mostrar mensaje de éxito
-                formStatus.innerHTML = `✅ ¡Gracias ${nombre}! Tu mensaje ha sido enviado con éxito. Nos contactaremos pronto.`;
-                formStatus.className = "form-success";
-                formStatus.style.display = "block"; // Asegurar visibilidad
-
-                // Limpiar formulario
-                contactForm.reset();
-                btn.innerText = "Enviar Mensaje";
-                btn.disabled = false;
-            }, 1500);
+            // Enviar datos al backend
+            fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre, email, mensaje })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        // Mostrar mensaje de éxito
+                        formStatus.innerHTML = `✅ ¡Gracias ${nombre}! Tu mensaje ha sido enviado con éxito. Nos contactaremos pronto.`;
+                        formStatus.className = "form-success";
+                        formStatus.style.display = "block";
+                        contactForm.reset();
+                    } else {
+                        // Mostrar error
+                        formStatus.innerHTML = `❌ Error: ${data.message}`;
+                        formStatus.className = "form-error"; // Asegúrate de tener estilos para esto o usa inline styles
+                        formStatus.style.display = "block";
+                        formStatus.style.color = "red";
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    formStatus.innerHTML = `❌ Ocurrió un error al enviar el mensaje.`;
+                    formStatus.style.display = "block";
+                    formStatus.style.color = "red";
+                })
+                .finally(() => {
+                    btn.innerText = "Enviar Mensaje";
+                    btn.disabled = false;
+                });
         });
     }
 

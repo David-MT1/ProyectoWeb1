@@ -37,6 +37,15 @@ CREATE TABLE IF NOT EXISTS carrito (
     FOREIGN KEY (producto_id) REFERENCES productos(id) ON DELETE CASCADE
 );
 
+-- 4. Tabla de Contactos
+CREATE TABLE IF NOT EXISTS contactos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    mensaje TEXT NOT NULL,
+    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Usuario Admin por defecto (Password provisional: 'admin123')
 -- Nota: En producción las contraseñas deben hashearse. Esto es solo para iniciar.
 -- INSERT INTO usuarios (nombre, email, password_hash, rol) VALUES ('Administrador', 'admin@champions.com', 'admin123', 'admin');
