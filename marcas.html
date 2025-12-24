@@ -12,14 +12,14 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><img src="logo.png"></div>
+                <div class="logo-icon"><img src="logo.png" alt="Logo"></div>
                 Champions Wear
             </a>
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="productos.html">Tienda</a></li>
-                    <li><a href="marcas.html" status="activo">Marcas</a></li>
+                    <li><a href="marcas.html" class="active">Marcas</a></li>
                     <li><a href="ofertas.html">Ofertas</a></li>
                     <li><a href="novedades.html">Novedades</a></li>
                     <li><a href="contacto.html">Contacto</a></li>
@@ -37,35 +37,37 @@
         <div class="filters-bar">
             <input type="text" placeholder="Buscar marca..." id="brandSearch">
         </div>
+        <!-- Tarjetas de marcas -->
         <div class="brands-grid-marcas" id="brandsGrid">
-            <!-- Tarjetas de marcas -->
-            <div class="brand-card" data-name="adidas">
+            <div class="brand-card" data-name="Adidas"
+                data-desc="Ropa y calzado de alta tecnología, innovación y confort."
+                data-logo="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" alt="Adidas Logo">
                 </div>
                 <div class="brand-info">
                     <h3 class="brand-name">Adidas</h3>
                     <p class="brand-desc">Ropa y calzado deportivo icónico.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Adidas', 'Ropa y calzado de alta tecnología, innovación y confort.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="nike">
+            <div class="brand-card" data-name="Nike"
+                data-desc="Ropa, calzado y accesorios para todas las disciplinas deportivas y vida urbana."
+                data-logo="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
                 </div>
                 <div class="brand-info">
                     <h3 class="brand-name">Nike</h3>
                     <p class="brand-desc">Innovación, moda y tecnología en deportes.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Nike', 'Ropa, calzado y accesorios para todas las disciplinas deportivas y vida urbana.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="puma">
+            <div class="brand-card" data-name="Puma"
+                data-desc="Marca líder en ropa y calzado deportivo de alto diseño y confort."
+                data-logo="https://images.seeklogo.com/logo-png/28/2/puma-se-logo-png_seeklogo-287825.png">
                 <div class="brand-image">
                     <img src="https://images.seeklogo.com/logo-png/28/2/puma-se-logo-png_seeklogo-287825.png"
                         alt="Puma Logo">
@@ -73,26 +75,26 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Puma</h3>
                     <p class="brand-desc">Estilo y rendimiento en moda deportiva.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Puma', 'Marca líder en ropa y calzado deportivo de alto diseño y confort.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="reebok">
+            <div class="brand-card" data-name="Reebok"
+                data-desc="Equipos y ropa ideales para entrenamiento de alto nivel y moda urbana."
+                data-logo="https://i.revistapym.com.co/old/2019/11/LOGO-REEBOK-FINAL-.png?w=1200">
                 <div class="brand-image">
                     <img src="https://i.revistapym.com.co/old/2019/11/LOGO-REEBOK-FINAL-.png?w=1200" alt="Reebok Logo">
                 </div>
                 <div class="brand-info">
                     <h3 class="brand-name">Reebok</h3>
                     <p class="brand-desc">Tradición, innovación y fitness extremo.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Reebok', 'Equipos y ropa ideales para entrenamiento de alto nivel y moda urbana.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="underarmour">
+            <div class="brand-card" data-name="Under Armour"
+                data-desc="Pionera en prendas deportivas de alto rendimiento."
+                data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Under_armour_logo.svg/2560px-Under_armour_logo.svg.png">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Under_armour_logo.svg/2560px-Under_armour_logo.svg.png"
                         alt="Under Armour Logo">
@@ -100,13 +102,13 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Under Armour</h3>
                     <p class="brand-desc">Tecnología en ropa y accesorios deportivos.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Under Armour', 'Pionera en prendas deportivas de alto rendimiento.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="newbalance">
+            <div class="brand-card" data-name="New Balance"
+                data-desc="Calzado y ropa deportiva para todo tipo de atleta y actividad."
+                data-logo="https://upload.wikimedia.org/wikipedia/commons/archive/e/ea/20160801155104%21New_Balance_logo.svg">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/archive/e/ea/20160801155104%21New_Balance_logo.svg"
                         alt="New Balance Logo">
@@ -114,13 +116,13 @@
                 <div class="brand-info">
                     <h3 class="brand-name">New Balance</h3>
                     <p class="brand-desc">Comodidad y durabilidad mundialmente conocidas.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('New Balance', 'Calzado y ropa deportiva para todo tipo de atleta y actividad.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="fila">
+            <div class="brand-card" data-name="Fila"
+                data-desc="Ropa y zapatillas deportivas con estilo vintage y urbano."
+                data-logo="https://cdn.freebiesupply.com/logos/large/2x/fila-1-logo-png-transparent.png">
                 <div class="brand-image">
                     <img src="https://cdn.freebiesupply.com/logos/large/2x/fila-1-logo-png-transparent.png"
                         alt="Fila Logo">
@@ -128,26 +130,26 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Fila</h3>
                     <p class="brand-desc">Herencia deportiva y moda retro.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Fila', 'Ropa y zapatillas deportivas con estilo vintage y urbano.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="jordan">
+            <div class="brand-card" data-name="Jordan"
+                data-desc="La línea icónica de Michael Jordan para amantes del baloncesto y el streetwear."
+                data-logo="https://upload.wikimedia.org/wikipedia/en/3/37/Jumpman_logo.svg">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/en/3/37/Jumpman_logo.svg" alt="Jordan Logo">
                 </div>
                 <div class="brand-info">
                     <h3 class="brand-name">Jordan</h3>
                     <p class="brand-desc">Inspiración y leyenda del básquetbol.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Jordan', 'La línea icónica de Michael Jordan para amantes del baloncesto y el streetwear.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="converse">
+            <div class="brand-card" data-name="Converse"
+                data-desc="Zapatillas y ropa para todos, de espíritu urbano y creativo."
+                data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/1280px-Converse_logo.svg.png">
                 <div class="brand-image">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Converse_logo.svg/1280px-Converse_logo.svg.png"
                         alt="Converse Logo">
@@ -155,13 +157,13 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Converse</h3>
                     <p class="brand-desc">Clásicos de estilo atemporal.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Converse', 'Zapatillas y ropa para todos, de espíritu urbano y creativo.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="vans">
+            <div class="brand-card" data-name="Vans"
+                data-desc="Calzado, ropa y accesorios para el estilo de vida joven y alternativo."
+                data-logo="https://images.seeklogo.com/logo-png/25/2/vans-logo-png_seeklogo-257446.png">
                 <div class="brand-image">
                     <img src="https://images.seeklogo.com/logo-png/25/2/vans-logo-png_seeklogo-257446.png"
                         alt="Vans Logo">
@@ -169,13 +171,13 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Vans</h3>
                     <p class="brand-desc">Icono en calzado y ropa urbana.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Vans', 'Calzado, ropa y accesorios para el estilo de vida joven y alternativo.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
-            <div class="brand-card" data-name="lacoste">
+            <div class="brand-card" data-name="Lacoste"
+                data-desc="La marca del cocodrilo; frescura, sport y diseño para cualquier ocasión."
+                data-logo="https://logos-marcas.com/wp-content/uploads/2020/09/Lacoste-Emblema.png">
                 <div class="brand-image">
                     <img src="https://logos-marcas.com/wp-content/uploads/2020/09/Lacoste-Emblema.png"
                         alt="Lacoste Logo">
@@ -183,9 +185,7 @@
                 <div class="brand-info">
                     <h3 class="brand-name">Lacoste</h3>
                     <p class="brand-desc">Elegancia sport y tradición francesa.</p>
-                    <button class="more-info-btn"
-                        onclick="showBrandModal('Lacoste', 'La marca del cocodrilo; frescura, sport y diseño para cualquier ocasión.')">Ver
-                        más</button>
+                    <button class="more-info-btn">Ver más</button>
                 </div>
             </div>
 
@@ -198,8 +198,7 @@
                     <p class="brand-desc">Nuevas marcas deportivas llegarán pronto. ¡Mantente atento!</p>
                 </div>
             </div>
-
-        </div>
+        </div> <!-- End brandsGrid -->
     </main>
 
 
@@ -207,6 +206,9 @@
     <div id="brandModal" class="modal" style="display:none;">
         <div class="modal-content">
             <span class="close-btn" onclick="closeBrandModal()">&times;</span>
+            <div class="modal-logo-container">
+                <img id="modalBrandLogo" src="" alt="Marca Logo">
+            </div>
             <h2 id="modalBrandName"></h2>
             <p id="modalBrandDesc"></p>
         </div>
@@ -215,45 +217,39 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Sobre Nosotros</h3>
+                <h3>Champions Wear</h3>
+                <p style="color: #aaa; line-height: 1.6;">Tu destino número uno para ropa deportiva de alta calidad.
+                    Inspiramos a atletas de todos los niveles.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="#">Quiénes somos</a></li>
-                    <li><a href="#">Misión y visión</a></li>
-                    <li><a href="#">Equipo</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Ayuda</h3>
                 <ul>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                    <li><a href="#">Envíos y devoluciones</a></li>
-                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul>
-                    <li><a href="#">Correo: ChampionsWear@gmail.com</a></li>
-                    <li><a href="#">Teléfono: +51 993 063 564</a></li>
-                    <li><a href="#">Ubicación: Arequipa, Perú</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column redes">
                 <h3>Síguenos</h3>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png"
-                            alt="Instagram"></a>
-                    <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
+            <p>&copy; 2025 Champions Wear - Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="js/marcas.js"></script>

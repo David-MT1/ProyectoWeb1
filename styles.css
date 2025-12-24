@@ -1,7 +1,7 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -12,8 +12,14 @@ body {
 
 /* Header */
 header {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.85);
+    /* Más transparente */
+    backdrop-filter: blur(12px);
+    /* Efecto vidrio esmerilado */
+    -webkit-backdrop-filter: blur(12px);
+    /* Soporte Safari */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -38,7 +44,7 @@ header {
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    font-family:Impact, cursive, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, cursive, 'Arial Narrow Bold', sans-serif;
     font-size: 1.8rem;
     color: #000000;
     text-decoration: none;
@@ -49,7 +55,7 @@ header {
     transform: scale(1.05);
 }
 
-.logo-icon img{
+.logo-icon img {
     width: 90px;
     height: 60px;
     display: flex;
@@ -69,28 +75,40 @@ nav ul {
 nav ul li a {
     text-decoration: none;
     color: #333;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1.05rem;
+    padding: 0.5rem 0;
     transition: all 0.3s ease;
     position: relative;
+    opacity: 0.7;
+    /* Inactivo un poco transparente */
+}
+
+nav ul li a:hover {
+    color: #011158;
+    opacity: 1;
+}
+
+/* Estado Activo Nuevo */
+nav ul li a.active {
+    color: #011158;
+    opacity: 1;
 }
 
 nav ul li a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
+    bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: #667eea;
+    height: 3px;
+    background: linear-gradient(90deg, #011158, #003366);
     transition: width 0.3s ease;
+    border-radius: 2px;
 }
 
-nav ul li a:hover {
-    color: #667eea;
-}
-
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
     width: 100%;
 }
 
@@ -131,6 +149,40 @@ nav ul li a:hover::after {
     box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
+/* Responsive Header */
+@media (max-width: 900px) {
+    .nav-container {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        /* Permite que baje si no entra */
+        justify-content: center;
+    }
+
+    nav ul li a {
+        font-size: 0.95rem;
+    }
+
+    .user-actions {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        /* Apila enlaces en móviles pequeños */
+        gap: 0.5rem;
+        align-items: center;
+    }
+}
+
 
 
 
@@ -157,6 +209,7 @@ nav ul li a:hover::after {
     margin: 3rem auto;
     padding: 0 2rem;
 }
+
 /* Marcas */
 .main-container-form {
     display: flex;
@@ -192,8 +245,11 @@ nav ul li a:hover::after {
 /* Modal de información de marca */
 .modal {
     position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background: rgba(0,0,20,0.72);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 20, 0.72);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -204,7 +260,7 @@ nav ul li a:hover::after {
     background: white;
     padding: 2.5rem 2rem;
     border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
     max-width: 420px;
     width: 95vw;
     position: relative;
@@ -213,7 +269,8 @@ nav ul li a:hover::after {
 
 .close-btn {
     position: absolute;
-    top: 15px; right: 22px;
+    top: 15px;
+    right: 22px;
     font-size: 2rem;
     color: #667eea;
     cursor: pointer;
@@ -313,82 +370,58 @@ button:hover {
 
 
 
+/* =========================================
+   NUEVA PÁGINA DE CONTACTO (Profesional)
+   ========================================= */
 
-
-
-
-/* Contacto */
-
-.contenedor-1 {
+.contacto-wrapper {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
     display: grid;
-    /* Esto intentará poner tantos elementos como quepan de 320px */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 40px;
-    padding: 64px 32px;
-    max-width: 1400px;
-    margin: 0 auto;
-    /* ESTO CENTRA LOS ELEMENTOS SI NO LLENAN TODA LA FILA */
-    justify-content: center; 
+    grid-template-columns: 1fr 1fr;
+    /* Dividido en 2 columnas iguales */
+    gap: 60px;
     align-items: start;
 }
 
-.item {
-    background: white;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+/* --- Columna Izquierda: Información --- */
+.contacto-info h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.contacto-info .intro-text {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+.info-bloque {
     display: flex;
-    margin: 0 auto;
-    width: 100%;
-    max-width: 400px;
     flex-direction: column;
-    height: auto; /* Que mida lo que necesite su contenido */
+    gap: 30px;
+    margin-bottom: 40px;
 }
 
-.item form {
+.info-item {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
+    align-items: flex-start;
+    gap: 20px;
 }
 
-.item:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.item h1 {
-    font-size: 26px;
-    margin-bottom: 16px;
-    letter-spacing: 2px;
-    color: rgba(0, 51, 255, 0.6);
-}
-
-.item p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 16px;
-}
-
-.social-lista {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-    margin-top: auto;
-}
-
-.social-lista li a {
+.info-item .icon {
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.1);
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    color: white;
-    text-decoration: none;
-    background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
     transition: background 0.3s ease, transform 0.3s ease;
 }
@@ -517,10 +550,10 @@ button:hover {
 
 .scroll-content {
     position: relative;
-    padding: 100px 40px 0px 40px; 
-    min-height: auto;  
+    padding: 100px 40px 0px 40px;
+    min-height: auto;
     z-index: 1;
-    margin-bottom: 20px; 
+    margin-bottom: 20px;
 }
 
 .brands-container {
@@ -531,22 +564,26 @@ button:hover {
 
 .brands-container-full {
     width: 100%;
-    max-width: 1400px; /* Ancho máximo de tu página */
+    max-width: 1400px;
+    /* Ancho máximo de tu página */
     margin: 0 auto;
     padding: 20px;
 }
 
 .brands-grid-3 {
     display: flex;
-    gap: 30px; /* Espacio entre marcas */
+    gap: 30px;
+    /* Espacio entre marcas */
     justify-content: space-between;
     width: 100%;
 }
 
 /* Ajuste de las tarjetas para que crezcan */
 .brands-grid-3 .brand-card {
-    flex: 1; /* Esto hace que las 3 ocupen el mismo ancho */
-    min-width: 0; /* Evita que las imágenes desborden en pantallas pequeñas */
+    flex: 1;
+    /* Esto hace que las 3 ocupen el mismo ancho */
+    min-width: 0;
+    /* Evita que las imágenes desborden en pantallas pequeñas */
     max-width: 100%;
     margin: 0;
     /* Mantén tus estilos previos de bordes, sombras, etc. */
@@ -573,11 +610,30 @@ button:hover {
 
 .brands-grid-marcas {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 por fila */
+    grid-template-columns: repeat(4, 1fr);
+    /* 4 por fila */
     gap: 2rem;
     width: 100%;
     padding: 0 2rem;
     justify-items: center;
+}
+
+@media (max-width: 1024px) {
+    .brands-grid-marcas {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .brands-grid-marcas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .brands-grid-marcas {
+        grid-template-columns: 1fr;
+    }
 }
 
 .nav-button {
@@ -612,7 +668,7 @@ button:hover {
     left: 10px;
     color: black;
     font-weight: bold;
-    
+
 }
 
 .nav-button.next {
@@ -769,7 +825,7 @@ button:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: 
+    background:
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
 }
@@ -1110,7 +1166,7 @@ button:hover {
 .banner-contenido input[type="email"] {
     outline: none;
     font-size: 1rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -1225,51 +1281,51 @@ button:hover {
 }
 
 .footer-column {
-  width: 220px;
-  margin-bottom: 30px;
+    width: 220px;
+    margin-bottom: 30px;
 }
 
 .footer-column h3 {
-  font-size: 18px;
-  margin-bottom: 15px;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
 
 .footer-column ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .footer-column ul li {
-  margin-bottom: 8px;
+    margin-bottom: 8px;
 }
 
 .footer-column a {
-  color: #bbb;
-  transition: color 0.3s;
+    color: #bbb;
+    transition: color 0.3s;
 }
 
 .footer-column a:hover {
-  color: #fff;
+    color: #fff;
 }
 
 .social-icons a img {
-  width: 28px;
-  height: 28px;
-  margin-right: 10px;
-  filter: brightness(0) invert(1);
-  transition: opacity 0.3s;
+    width: 28px;
+    height: 28px;
+    margin-right: 10px;
+    filter: brightness(0) invert(1);
+    transition: opacity 0.3s;
 }
 
 .social-icons a img:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .footer-bottom {
-  text-align: center;
-  padding-top: 15px;
-  border-top: 1px solid #333;
-  font-size: 14px;
-  color: #888;
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #333;
+    font-size: 14px;
+    color: #888;
 }
 
 
@@ -1307,7 +1363,7 @@ button:hover {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     height: fit-content;
 }
 
@@ -1345,7 +1401,8 @@ summary::after {
 .opcion:hover {
     background-color: #e7f1ff;
     color: #007bff;
-    padding-left: 18px; /* Pequeño efecto de empuje */
+    padding-left: 18px;
+    /* Pequeño efecto de empuje */
 }
 
 #boton-limpiar {
@@ -1382,13 +1439,13 @@ summary::after {
     border-radius: 15px;
     padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
 .item img {
@@ -1404,7 +1461,8 @@ summary::after {
     font-weight: 600;
     margin: 10px 0 5px 0;
     color: #444;
-    height: 40px; /* Para que todos los nombres ocupen lo mismo */
+    height: 40px;
+    /* Para que todos los nombres ocupen lo mismo */
     overflow: hidden;
 }
 
@@ -1467,18 +1525,22 @@ summary::after {
     background: white;
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
+
 .form-admin {
     display: grid;
     gap: 15px;
 }
-.form-admin input, .form-admin select {
+
+.form-admin input,
+.form-admin select {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
 }
+
 .btn-guardar {
     background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
@@ -1489,9 +1551,10 @@ summary::after {
     border-radius: 8px;
     transition: 0.3s;
 }
+
 .btn-guardar:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
 }
 
 
@@ -1502,14 +1565,15 @@ summary::after {
 /*PRODUCTOOOOOOO*/
 .detalle-container {
     display: grid;
-    grid-template-columns: 1.2fr 1fr; /* Imagen un poco más grande que el texto */
+    grid-template-columns: 1.2fr 1fr;
+    /* Imagen un poco más grande que el texto */
     gap: 60px;
     max-width: 1200px;
     margin: 40px auto;
     padding: 30px;
     background: #fff;
     border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
 }
 
 /* Sección de la Imagen */
@@ -1606,8 +1670,13 @@ summary::after {
 }
 
 /* Puedes usar imágenes de Unsplash como placeholder */
-.category-card.calzado { background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff'); }
-.category-card.ropa { background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438'); }
+.category-card.calzado {
+    background-image: url('https://images.unsplash.com/photo-1542291026-7eec264c27ff');
+}
+
+.category-card.ropa {
+    background-image: url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438');
+}
 
 .category-card:hover {
     transform: translateY(-5px);
@@ -1616,7 +1685,7 @@ summary::after {
 .category-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1640,6 +1709,7 @@ summary::after {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1647,14 +1717,90 @@ summary::after {
 }
 
 /* Asegúrate de que el modal se vea por encima de todo */
+/* Asegúrate de que el modal se vea por encima de todo */
 .modal {
     z-index: 2000;
-    backdrop-filter: blur(5px); /* Efecto de desenfoque al fondo */
-    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
+.modal-content {
+    background: #fff;
+    padding: 3rem;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.4s ease-out;
+}
+
+.modal-logo-container {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: zoomIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    /* Efecto rebote llamativo */
+}
+
+.modal-logo-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.2));
+}
+
+#modalBrandName {
+    font-size: 2.2rem;
+    color: #1e293b;
+    margin-bottom: 15px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+#modalBrandDesc {
+    font-size: 1.1rem;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* Animaciones para el modal */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
 .temporizador-numero {
-    font-variant-numeric: tabular-nums; /* Mantiene los números con el mismo ancho */
+    font-variant-numeric: tabular-nums;
+    /* Mantiene los números con el mismo ancho */
     min-width: 1.5em;
     display: inline-block;
 }
@@ -1667,107 +1813,299 @@ summary::after {
     transform: scale(0.95);
 }
 
-.formulario-estilizado {
+/* =========================================
+   NUEVA PÁGINA DE CONTACTO (Minimalista & Contrastada)
+   ========================================= */
+
+.contacto-wrapper {
+    max-width: 1200px;
+    margin: 4rem auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: flex-start;
+}
+
+/* --- Columna Izquierda: Información --- */
+.contacto-info h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.contacto-info .intro-text {
+    font-size: 1.2rem;
+    color: #cbd5e1;
+    /* Gris claro para leer sobre oscuro */
+    margin-bottom: 3rem;
+    line-height: 1.6;
+    max-width: 450px;
+}
+
+.info-bloque {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    text-align: left;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.info-item .icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    color: #667eea;
+    /* Acento */
+}
+
+.info-detalles h3 {
+    color: #ffffff !important;
+    /* Forzar blanco */
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.info-detalles p {
+    color: #94a3b8 !important;
+    /* Gris medio */
+    font-size: 1rem;
+    margin: 0;
+}
+
+.map-container-nuevo {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-section h3 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+.social-icons-contact {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.social-icons-contact a {
+    font-size: 1.8rem;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.social-icons-contact a:hover {
+    opacity: 1;
+}
+
+/* --- Columna Derecha: Formulario Minimalista --- */
+.contacto-form-container {
+    background: #ffffff;
+    padding: 3rem;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+.form-card h2 {
+    color: #0f172a;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
 .grupo-input {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.grupo-input input, 
-.grupo-input textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box; /* Evita que el input se salga del cuadro */
+    margin-bottom: 1.5rem;
 }
 
 .grupo-input label {
+    display: block;
     font-size: 0.9rem;
-    font-weight: bold;
-    color: #333;
-}
-
-
-/* Efecto cuando haces clic para escribir */
-.grupo-input input:focus, 
-.grupo-input textarea:focus {
-    outline: none;
-    border-color: #011158; /* Color azul de tu marca */
-}
-
-.btn-enviar {
-    background-color: #011158;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    font-weight: 600;
+    color: #334155;
+    margin-bottom: 8px;
     text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.grupo-input input,
+.grupo-input textarea {
+    width: 100%;
+    padding: 16px;
+    background: #f1f5f9;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.grupo-input input:focus,
+.grupo-input textarea:focus {
+    background: #ffffff;
+    border-color: #667eea;
+    outline: none;
+}
+
+.btn-enviar-contacto {
+    width: 100%;
+    background: #011158;
+    /* Azul marca */
+    color: white;
+    font-weight: 700;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s;
+    margin-top: 1rem;
 }
 
-.btn-enviar:hover {
-    background-color: #003366;
-    transform: translateY(-2px);
+.btn-enviar-contacto:hover {
+    background: #003366;
 }
 
-.btn-enviar:active {
-    transform: translateY(0);
-}
-
-/* Mensaje de éxito */
+/* Mensaje de estado */
 #formStatus {
-    margin-top: 15px;
+    margin-top: 20px;
     padding: 15px;
-    border-radius: 6px;
-    display: none; /* Se activa con JS */
+    border-radius: 8px;
+    font-weight: 500;
+    text-align: center;
+    display: none;
 }
 
 .form-success {
-    display: block !important;
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
+    background: #dcfce7;
+    color: #166534;
 }
 
-input, textarea {
-    width: 100%;
-    max-width: 100%; /* Evita que se salgan del cuadro blanco */
-    box-sizing: border-box; /* Incluye el padding en el ancho total */
+/* Responsive */
+@media (max-width: 900px) {
+    .contacto-wrapper {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        margin: 2rem auto;
+    }
+
+    .contacto-info h1 {
+        font-size: 2.5rem;
+    }
+
+    .contacto-form-container {
+        padding: 2rem;
+    }
 }
 
-.formulario-item {
-    grid-column: 1 / -1; /* Esto hace que ocupe TODO el ancho horizontal */
-    max-width: 600px;    /* Pero limitamos su ancho para que no se vea gigante */
-    margin: 0 auto;      /* Y lo centramos */
+/* FOOTER PROFESIONAL */
+.footer {
+    background: #00000a;
+    /* Casi negro azulado */
+    color: #fff;
+    padding: 80px 0 30px;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.item-formulario {
-    /* En pantallas grandes, hace que el item salte a una nueva fila y se centre */
-    grid-column: 1 / -1; 
-    justify-self: center; 
-    
-    width: 100%;
-    max-width: 500px; /* Controla qué tan ancho quieres el formulario */
+.footer-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
 }
 
-.item-formulario h1, 
-.item-formulario p {
-    text-align: center;
+.footer-column h3 {
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+    color: #fff;
+    font-weight: 700;
+    position: relative;
+    display: inline-block;
 }
 
-.formulario-estilizado {
-    width: 100%;
+.footer-column h3::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #007bff;
+    /* Azul acento */
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 12px;
+}
+
+.footer-column ul li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.3s ease;
     display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Hace que los inputs ocupen el ancho del form */
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+    transform: translateX(5px);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a img {
+    width: 40px;
+    height: 40px;
+    filter: invert(1);
+    /* Vuelve blancos los iconos negros */
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    margin-top: 60px;
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #666;
+    font-size: 0.9rem;
 }

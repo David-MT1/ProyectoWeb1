@@ -11,14 +11,13 @@
 <body>
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon"><img src="logo.png"></div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><img src="logo.png" alt="Logo"></div>
                 Champions Wear
             </a>
-
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="productos.html">Tienda</a></li>
                     <li><a href="marcas.html">Marcas</a></li>
                     <li><a href="ofertas.html">Ofertas</a></li>
@@ -26,7 +25,6 @@
                     <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
-
             <div class="user-actions">
                 <button class="btn-login" onclick="window.location.href='inicioSesion.html'">Iniciar Sesión</button>
                 <button class="btn-signup" onclick="window.location.href='creaCuenta.html'">Crear Cuenta</button>
@@ -110,13 +108,13 @@
             <div class="category-card calzado">
                 <div class="category-overlay">
                     <h2>Calzado</h2>
-                    <button class="btn-shop">Ver más</button>
+                    <a href="productos.html?categoria=Calzado" class="btn-shop">Ver más</a>
                 </div>
             </div>
             <div class="category-card ropa">
                 <div class="category-overlay">
                     <h2>Ropa Deportiva</h2>
-                    <button class="btn-shop">Ver más</button>
+                    <a href="productos.html?categoria=Ropa" class="btn-shop">Ver más</a>
                 </div>
             </div>
         </section>
@@ -157,13 +155,14 @@
                     <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
                     <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png"
                             alt="Instagram"></a>
-                    <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
+            <p>&copy; 2025 Champions Wear - Todos los derechos reservados.</p>
         </div>
     </footer>
 

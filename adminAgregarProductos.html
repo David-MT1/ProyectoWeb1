@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Marcas | Los Manrique's</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><img src="logo.png"></div>
-                    Champions Wear
+                <div class="logo-icon"><img src="logo.png" alt="Logo"></div>
+                Champions Wear
             </a>
             <nav>
                 <ul>
-                    <li><a href="#inicio"><a href="index.html">Inicio</a></a></li>
-                    <li><a href="#marcas"><a href="marcas.html">Marcas</a></a></li>
-                    <li><a href="#ofertas"><a href="ofertas.html">Ofertas</a></a></li>
-                    <li><a href="#novedades"><a href="novedades.html">Novedades</a></a></li>
-                    <li><a href="#contacto"><a href="contacto.html">Contacto</a></a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="marcas.html">Marcas</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="novedades.html">Novedades</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </nav>
             <div class="user-actions">
@@ -32,15 +35,16 @@
     <div class="contenedor-admin">
         <h2>Añadir Nuevo Producto</h2>
         <p>Completa los datos para subir el producto al catálogo.</p>
-        
+
         <form id="form-producto" class="form-admin">
             <input type="text" id="nombre" placeholder="Nombre del producto" required>
             <input type="number" id="precio" placeholder="Precio (S/)" step="0.1" required>
-            
-            <textarea id="descripcion" placeholder="Descripción detallada del producto..." rows="4" required style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;"></textarea>
+
+            <textarea id="descripcion" placeholder="Descripción detallada del producto..." rows="4" required
+                style="padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-family: inherit;"></textarea>
 
             <input type="text" id="imagen" placeholder="URL de la imagen (ej: https://...)" required>
-            
+
             <select id="genero" required>
                 <option value="">Seleccionar Género</option>
                 <option value="Hombre">Hombre</option>
@@ -75,49 +79,45 @@
     </div>
 
     <footer class="footer">
-    <div class="footer-container">
-        <div class="footer-column">
-        <h3>Sobre Nosotros</h3>
-        <ul>
-            <li><a href="#">Quiénes somos</a></li>
-            <li><a href="#">Misión y visión</a></li>
-            <li><a href="#">Equipo</a></li>
-        </ul>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Champions Wear</h3>
+                <p style="color: #aaa; line-height: 1.6;">Tu destino número uno para ropa deportiva de alta calidad.
+                    Inspiramos a atletas de todos los niveles.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Ayuda</h3>
+                <ul>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Síguenos</h3>
+                <div class="social-icons">
+                    <a href="#"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
+                </div>
+            </div>
         </div>
-
-        <div class="footer-column">
-        <h3>Ayuda</h3>
-        <ul>
-            <li><a href="#">Preguntas frecuentes</a></li>
-            <li><a href="#">Envíos y devoluciones</a></li>
-            <li><a href="#">Términos y condiciones</a></li>
-        </ul>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Champions Wear - Todos los derechos reservados.</p>
         </div>
-
-        <div class="footer-column">
-        <h3>Contacto</h3>
-        <ul>
-            <li><a href="#">Correo: ChampionsWear@gmail.com</a></li>
-            <li><a href="#">Teléfono: +51 993 063 564</a></li>
-            <li><a href="#">Ubicación: Arequipa, Perú</a></li>
-        </ul>
-        </div>
-
-        <div class="footer-column redes">
-        <h3>Síguenos</h3>
-        <div class="social-icons">
-            <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
-            <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
-            <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
-        </div>
-        </div>
-    </div>
-
-    <div class="footer-bottom">
-        <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
-    </div>
     </footer>
     <script src="js/añadeProductoAdmin.js"></script>
-    
+
 </body>
+
 </html>

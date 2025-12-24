@@ -11,11 +11,10 @@
 <body>
     <header>
         <div class="nav-container">
-            <a href="#" class="logo">
-                <div class="logo-icon"><img src="logo.png"></div>
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><img src="logo.png" alt="Logo"></div>
                 Champions Wear
             </a>
-
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
@@ -23,79 +22,89 @@
                     <li><a href="marcas.html">Marcas</a></li>
                     <li><a href="ofertas.html">Ofertas</a></li>
                     <li><a href="novedades.html">Novedades</a></li>
-                    <li><a href="contacto.html">Contacto</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
                 </ul>
             </nav>
-
             <div class="user-actions">
                 <button class="btn-login" onclick="window.location.href='inicioSesion.html'">Iniciar Sesión</button>
                 <button class="btn-signup" onclick="window.location.href='creaCuenta.html'">Crear Cuenta</button>
             </div>
         </div>
     </header>
-    <main>
-        <div class="contenedor-1">
-            <div class="item">
-                <h1>REDES SOCIALES</h1>
-                <p>Síguenos para no perderte ninguna de nuestras novedades y ofertas exclusivas.</p>
-                <ul class="social-lista">
-                    <li><a href="#" aria-label="Facebook">📘</a></li>
-                    <li><a href="#" aria-label="Instagram">📸</a></li>
-                    <li><a href="#" aria-label="Tiktok">🎵</a></li>
-                    <li><a href="#" aria-label="Youtube">📺</a></li>
-                </ul>
-            </div>
 
-            <div class="item">
-                <h1>CONTACTO Y UBICACIÓN</h1>
-                <div class="contact-info">
-                    <span class="icon">📞</span>
-                    <p>+51 993 063 564</p>
+    <main>
+        <div class="contacto-wrapper">
+            <!-- CoIumna Izquierda: Información -->
+            <div class="contacto-info">
+                <h1>Contáctanos</h1>
+                <p class="intro-text">
+                    En <b>Champions Wear</b> estamos listos para atenderte. Visítanos en nuestra tienda o escríbenos.
+                </p>
+
+                <div class="info-bloque">
+                    <div class="info-item">
+                        <span class="icon">📍</span>
+                        <div class="info-detalles">
+                            <h3>Ubicación</h3>
+                            <p>Calle Mercaderes 123, Arequipa, Perú</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">📞</span>
+                        <div class="info-detalles">
+                            <h3>Teléfono</h3>
+                            <p>+51 993 063 564</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="icon">✉️</span>
+                        <div class="info-detalles">
+                            <h3>Correo</h3>
+                            <p>contacto@championswear.com</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <span class="icon">📍</span>
-                    <p>Encuéntranos en el corazón de Arequipa.</p>
-                </div>
-                <div class="map-container">
+
+                <div class="map-container-nuevo">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122490.89311142953!2d-71.59325883852538!3d-16.40396016301777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91424a487785b9b3%3A0x13a216536b6a2c20!2sArequipa!5e0!3m2!1ses-419!2spe!4v1668143219803!5m2!1ses-419!2spe"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
                     </iframe>
+                </div>
+
+                <div class="social-section">
+                    <h3>Síguenos en redes</h3>
+                    <div class="social-icons-contact">
+                        <a href="#">📘</a>
+                        <a href="#">📸</a>
+                        <a href="#">🎵</a>
+                        <a href="#">📺</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="item">
-                <h1>SOBRE NOSOTROS</h1>
-                <p>
-                    <b>Champions Wear</b> es una tienda de ropa deportiva arequipeña dedicada a brindar estilo,
-                    comodidad y rendimiento. Cada colección refleja la fuerza y energía de nuestra ciudad blanca.
-                </p>
-                <p class="tagline">
-                    Una empresa de arequipeños, para arequipeños.
-                </p>
+            <!-- Columna Derecha: Formulario -->
+            <div class="contacto-form-container">
+                <div class="form-card">
+                    <h2>Envíanos un mensaje</h2>
+                    <form id="contactForm">
+                        <div class="grupo-input">
+                            <label>Nombre Completo</label>
+                            <input type="text" id="nombre" required placeholder="Tu nombre">
+                        </div>
+                        <div class="grupo-input">
+                            <label>Correo Electrónico</label>
+                            <input type="email" id="email" required placeholder="tu@email.com">
+                        </div>
+                        <div class="grupo-input">
+                            <label>Mensaje</label>
+                            <textarea id="mensaje" rows="5" required placeholder="¿Cómo podemos ayudarte?"></textarea>
+                        </div>
+                        <button type="submit" class="btn-enviar-contacto">Enviar Mensaje</button>
+                    </form>
+                    <div id="formStatus"></div>
+                </div>
             </div>
-
-            <div class="item">
-                <h1>ENVÍANOS UN MENSAJE</h1>
-                <form id="contactForm" class="formulario-estilizado">
-                    <div class="grupo-input">
-                        <label for="nombre">Nombre</label>
-                        <input type="text" id="nombre" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="grupo-input">
-                        <label for="email">Correo</label>
-                        <input type="email" id="email" placeholder="correo@ejemplo.com" required>
-                    </div>
-                    <div class="grupo-input">
-                        <label for="mensaje">Consulta</label>
-                        <textarea id="mensaje" rows="3" placeholder="¿En qué ayudamos?" required></textarea>
-                    </div>
-                    <button type="submit" class="btn-enviar">Enviar</button>
-                </form>
-                <div id="formStatus"></div>
-            </div>
-
         </div>
 
     </main>
@@ -103,45 +112,39 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-column">
-                <h3>Sobre Nosotros</h3>
+                <h3>Champions Wear</h3>
+                <p style="color: #aaa; line-height: 1.6;">Tu destino número uno para ropa deportiva de alta calidad.
+                    Inspiramos a atletas de todos los niveles.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="#">Quiénes somos</a></li>
-                    <li><a href="#">Misión y visión</a></li>
-                    <li><a href="#">Equipo</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="productos.html">Tienda</a></li>
+                    <li><a href="ofertas.html">Ofertas</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
                 <h3>Ayuda</h3>
                 <ul>
-                    <li><a href="#">Preguntas frecuentes</a></li>
-                    <li><a href="#">Envíos y devoluciones</a></li>
-                    <li><a href="#">Términos y condiciones</a></li>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Privacidad</a></li>
                 </ul>
             </div>
-
             <div class="footer-column">
-                <h3>Contacto</h3>
-                <ul>
-                    <li><a href="#">Correo: ChampionsWear@gmail.com</a></li>
-                    <li><a href="#">Teléfono: +51 993 063 564</a></li>
-                    <li><a href="#">Ubicación: Arequipa, Perú</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column redes">
                 <h3>Síguenos</h3>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
-                    <a href="https://www.instagram.com"><img src="imagenes_footer/icon-instagram.png"
-                            alt="Instagram"></a>
-                    <a href="https://www.youtube.com"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
+                    <a href="#"><img src="imagenes_footer/icon-facebook.png" alt="Facebook"></a>
+                    <a href="#"><img src="imagenes_footer/icon-instagram.png" alt="Instagram"></a>
+                    <a href="#"><img src="imagenes_footer/icon-youtube.png" alt="YouTube"></a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
-            <p>© 2025 Tu Sitio Web | Todos los derechos reservados</p>
+            <p>&copy; 2025 Champions Wear - Todos los derechos reservados.</p>
         </div>
     </footer>
     <script src="js/contacto.js"></script>

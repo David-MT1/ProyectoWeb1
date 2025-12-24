@@ -2,61 +2,60 @@
 // FUNCIONES DEL MODAL (GLOBALES)
 // ========================================
 
-function showBrandModal(name, description) {
-    console.log('showBrandModal llamada con:', name, description);
-    
+function showBrandModal(name, description, logoUrl) {
+    console.log('showBrandModal llamada con:', name, description, logoUrl);
+
     const modal = document.getElementById('brandModal');
     const modalName = document.getElementById('modalBrandName');
     const modalDesc = document.getElementById('modalBrandDesc');
-    
-    if (!modal) {
-        console.error('ERROR: No se encontró el modal con id="brandModal"');
+    const modalLogo = document.getElementById('modalBrandLogo');
+
+    if (!modal || !modalName || !modalDesc) {
+        console.error('ERROR: No se encontraron los elementos del modal');
         return;
     }
-    
-    if (!modalName) {
-        console.error('ERROR: No se encontró el elemento con id="modalBrandName"');
-        return;
-    }
-    
-    if (!modalDesc) {
-        console.error('ERROR: No se encontró el elemento con id="modalBrandDesc"');
-        return;
-    }
-    
+
     // Establecer contenido
     modalName.textContent = name;
     modalDesc.textContent = description;
-    
+
+    if (modalLogo && logoUrl) {
+        modalLogo.src = logoUrl;
+        modalLogo.alt = `Logo de ${name}`;
+    } else if (modalLogo) {
+        modalLogo.src = ''; // Limpiar si no hay logo
+    }
+
+
     // Mostrar modal
     modal.style.display = "flex";
     document.body.style.overflow = "hidden";
-    
+
     // Forzar animación
     setTimeout(() => {
         modal.style.opacity = "1";
     }, 10);
-    
+
     console.log('Modal mostrado correctamente');
 }
 
 function closeBrandModal() {
     console.log('closeBrandModal llamada');
-    
+
     const modal = document.getElementById('brandModal');
-    
+
     if (!modal) {
         console.error('ERROR: No se encontró el modal');
         return;
     }
-    
+
     modal.style.opacity = "0";
-    
+
     setTimeout(() => {
         modal.style.display = "none";
         document.body.style.overflow = "auto";
     }, 300);
-    
+
     console.log('Modal cerrado correctamente');
 }
 
@@ -66,11 +65,11 @@ function closeBrandModal() {
 
 document.addEventListener('DOMContentLoaded', () => {
     console.log('=== INICIO DE CARGA ===');
-    
+
     // Verificar que las funciones están disponibles
     console.log('showBrandModal disponible:', typeof showBrandModal === 'function');
     console.log('closeBrandModal disponible:', typeof closeBrandModal === 'function');
-    
+
     // ========================================
     // SELECTORES
     // ========================================
@@ -79,29 +78,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const brandCards = document.querySelectorAll('.brand-card:not(.coming-soon)');
     const modal = document.getElementById('brandModal');
     const moreInfoButtons = document.querySelectorAll('.more-info-btn');
-    
+
     console.log('Elementos encontrados:');
     console.log('- Buscador:', brandSearch ? 'SÍ' : 'NO');
     console.log('- Grid de marcas:', brandsGrid ? 'SÍ' : 'NO');
     console.log('- Total de tarjetas:', brandCards.length);
     console.log('- Modal:', modal ? 'SÍ' : 'NO');
     console.log('- Botones "Ver más":', moreInfoButtons.length);
-    
+
     // ========================================
-    // VERIFICAR ONCLICK EN BOTONES
+    // EVENT LISENERS PARA TARJETAS
     // ========================================
-    moreInfoButtons.forEach((button, index) => {
-        const onclickAttr = button.getAttribute('onclick');
-        console.log(`Botón ${index + 1} onclick:`, onclickAttr);
-        
-        // Agregar listener adicional como respaldo
-        button.addEventListener('click', function(e) {
-            console.log('Click detectado en botón', index + 1);
-            e.preventDefault();
-            e.stopPropagation();
+    const cards = document.querySelectorAll('.brand-card:not(.coming-soon)');
+
+    cards.forEach(card => {
+        const btn = card.querySelector('.more-info-btn');
+        if (btn) {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+
+                const name = card.getAttribute('data-name');
+                const desc = card.getAttribute('data-desc');
+                const logo = card.getAttribute('data-logo');
+
+                showBrandModal(name, desc, logo);
+            });
+        }
+
+        // También permitir click en toda la tarjeta para mejor UX
+        card.addEventListener('click', (e) => {
+            // Si no es el botón (ya manejado arriba), abrir también
+            if (!e.target.closest('.more-info-btn')) {
+                const name = card.getAttribute('data-name');
+                const desc = card.getAttribute('data-desc');
+                const logo = card.getAttribute('data-logo');
+                showBrandModal(name, desc, logo);
+            }
         });
     });
-    
+
+    console.log('Event listeners agregados a ' + cards.length + ' tarjetas.');
+
+
     // ========================================
     // BUSCADOR EN TIEMPO REAL
     // ========================================
@@ -112,9 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             brandCards.forEach(card => {
                 const brandName = card.getAttribute('data-name').toLowerCase();
-                
+
                 if (brandName.includes(searchTerm)) {
-                    card.style.display = "flex";
+                    card.style.display = "";
                     card.style.animation = "fadeIn 0.4s ease forwards";
                 } else {
                     card.style.display = "none";
@@ -123,23 +142,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             checkNoResults(searchTerm);
         });
-        
+
         // Animaciones del buscador
-        brandSearch.addEventListener('focus', function() {
+        brandSearch.addEventListener('focus', function () {
             this.style.transform = 'scale(1.02)';
             this.style.boxShadow = '0 4px 12px rgba(0, 210, 255, 0.3)';
         });
 
-        brandSearch.addEventListener('blur', function() {
+        brandSearch.addEventListener('blur', function () {
             this.style.transform = 'scale(1)';
             this.style.boxShadow = '';
         });
     }
-    
+
     // ========================================
     // EVENTOS DEL MODAL
     // ========================================
-    
+
     if (modal) {
         // Cerrar al hacer clic fuera
         modal.addEventListener('click', (event) => {
@@ -147,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 closeBrandModal();
             }
         });
-        
+
         console.log('Event listener del modal configurado');
     }
 
@@ -157,44 +176,44 @@ document.addEventListener('DOMContentLoaded', () => {
             closeBrandModal();
         }
     });
-    
+
     // ========================================
     // ANIMACIÓN DE ENTRADA
     // ========================================
     brandCards.forEach((card, index) => {
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
-        
+
         setTimeout(() => {
             card.style.transition = "all 0.5s ease";
             card.style.opacity = "1";
             card.style.transform = "translateY(0)";
         }, 100 * index);
     });
-    
+
     // ========================================
     // EFECTOS HOVER
     // ========================================
     brandCards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
 
-        card.addEventListener('mouseleave', function() {
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
-    
+
     moreInfoButtons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             this.style.transform = 'scale(1.05)';
         });
-        
-        button.addEventListener('mouseleave', function() {
+
+        button.addEventListener('mouseleave', function () {
             this.style.transform = 'scale(1)';
         });
     });
-    
+
     console.log('=== CARGA COMPLETADA ===');
 });
 
@@ -205,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function checkNoResults(term) {
     const existingMsg = document.getElementById('no-results-msg');
     const cardsVisible = Array.from(document.querySelectorAll('.brand-card'))
-                             .filter(c => c.style.display !== "none").length;
+        .filter(c => c.style.display !== "none").length;
 
     if (cardsVisible === 0 && term !== "") {
         if (!existingMsg) {
