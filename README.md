@@ -21,7 +21,7 @@ A continuación se detalla la participación de los miembros del equipo:
 | Integrante | Rol | Calificación |
 | :--- | :--- | :---: |
 | **Percy Molina Soncco** | Líder del Equipo | **100%** |
-| **Djins Manuel Valdivia Flores** | Desarrollador | **100%** |
+| **Manuel Djins Valdivia Flores** | Desarrollador | **100%** |
 | **David Jose Luis Mendoza Taco** | Desarrollador | **100%** |
 
 ---
