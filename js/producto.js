@@ -16,9 +16,10 @@ async function cargarProducto() {
     }));
 
     // 3. Buscar el producto específico
-    const p = productosNormalizados.find(item => item.id == productoId);
+    window.currentProduct = productosNormalizados.find(item => item.id == productoId);
 
-    if (p) {
+    if (window.currentProduct) {
+        const p = window.currentProduct;
         document.getElementById('detalle-producto').innerHTML = `
             <div class="detalle-imagen">
                 <img src="${p.imagen}" alt="${p.nombre}">
@@ -31,7 +32,7 @@ async function cargarProducto() {
                 <p class="precio-grande">S/ ${p.precio.toFixed(2)}</p>
                 <p class="descripcion-texto">${p.descripcion || "Este producto no tiene descripción aún."}</p>
                 
-                <button class="btn-comprar" onclick="agregarAlCarrito(${p.id})">
+                <button class="btn-comprar" onclick="handleAddToCart()">
                     AGREGAR AL CARRITO
                 </button>
             </div>
@@ -41,8 +42,12 @@ async function cargarProducto() {
     }
 }
 
-function agregarAlCarrito(id) {
-    alert("Producto " + id + " añadido al carrito");
+function handleAddToCart() {
+    if (window.currentProduct) {
+        addToCart(window.currentProduct);
+    } else {
+        alert("Error: Producto no cargado correctamente");
+    }
 }
 
 cargarProducto();
